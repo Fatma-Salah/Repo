@@ -1,0 +1,31 @@
+<div class="textarea-group" [style.width]="width">
+  @if (label || srcIcon) {
+    <div class="textarea-header">
+      @if (srcIcon) {
+        <img [src]="srcIcon" alt="Icon" class="textarea-icon" />
+      }
+    @if (label) {
+        <label [for]="label"  >
+        {{ label | translate }}   @if (!disabled) {
+         <span
+  [class]="isOptional? 'is-optional' : 'is-required'"
+>
+
+  ({{ isOptional ? ('optional' | translate) : ('required' | translate) }})
+</span>
+      }
+      </label>
+    }
+    </div>
+  }
+
+  <textarea
+    [name]="name"
+    [formControl]="control"
+    [id]="label"
+    class="textarea-control"
+    [placeholder]="placeholder | translate"
+    [readOnly]="readonly"
+    [rows]="textareaRows"
+  ></textarea>
+</div>

@@ -1,0 +1,66 @@
+<div >
+  <p class="title" *ngIf="title && appearLabel">{{ title | translate }}
+     @if (!disabled) {
+         <span
+  [class]="isOptional? 'is-optional' : 'is-required'"
+>
+
+  ({{ isOptional ? ('optional' | translate) : ('required' | translate) }})
+</span>
+      }
+  </p>
+  <p-select
+  [showClear]="true"
+    [resetFilterOnHide]="true"
+    [emptyMessage]="'NO_DATA' | translate"
+    [emptyFilterMessage]="'NO_RESULTS' | translate"
+    [filterPlaceholder]="('SEARCH_HERE' | translate)"
+    [filter]="filter"
+    [filterBy]="'name,code,id'"
+    [title]="titleDropdown | translate"
+    [formControl]="control"
+    [name]="name"
+    [optionValue]="optionValue"
+    [options]="filteredOptions"
+    [appendTo]="appendToBody ? 'body' : null"
+    optionLabel="name"
+    [loading]="loading"
+    (onChange)="onSelectChange($event)"
+    [placeholder]="(placeholder! | translate)"
+  (onFilter)="customFilter($event)"
+
+  >
+
+    <!-- Template for each option item     [placeholder]="(placeholder! | translate)"
+-->
+    <ng-template let-country pTemplate="item">
+      <div class="d-flex items-center gap-2">
+        <span
+          *ngIf="country?.countryFlag"
+          class="option-icon flag-icon country-emoji"
+          [ngClass]="'flag-icon-' + country.countryFlag.toLowerCase()"
+        >
+        </span>
+        <span>{{ country?.name }}</span>
+      </div>
+    </ng-template>
+
+    <!-- Template for selected item -->
+    <ng-template let-country pTemplate="selectedItem">
+      <div class="d-flex items-center gap-2">
+        <span
+          *ngIf="country?.countryFlag"
+          class="option-icon flag-icon country-emoji"
+          [ngClass]="'flag-icon-' + country.countryFlag.toLowerCase()"
+        >
+        </span>
+        <span>{{ country?.name }}</span>
+      </div>
+    </ng-template>
+  </p-select>
+ @if (note) {
+   <p class="note">
+    {{  note | translate}}
+  </p>
+ }
+</div>

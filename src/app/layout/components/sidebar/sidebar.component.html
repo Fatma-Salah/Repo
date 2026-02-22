@@ -1,0 +1,43 @@
+<!-- <nav class="sidebar" [class.collapsed]="collapsed$ | async">
+  <button (click)="toggleSidebar()">☰</button>
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.path" routerLinkActive="active">
+        <i [class]="item.icon"></i>
+        <span class="label">{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+</nav> -->
+<nav class="sidebar" [class.collapsed]="collapsed$ | async">
+  <button (click)="toggleSidebar()">☰</button>
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a
+        *ngIf="!item.children"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+      >
+        <i [class]="item.icon"></i>
+        <span class="label">{{ item.label | translate}}</span>
+      </a>
+
+      <!-- Parent with children -->
+      <div *ngIf="item.children" class="menu-parent">
+        <div class="parent-item" (click)="toggleSubMenu(item)">
+          <i [class]="item.icon"></i>
+          <span class="label">{{ item.label | translate }}</span>
+          <i class="pi pi-chevron-down arrow" [class.open]="isOpen(item)"></i>
+        </div>
+        <ul class="submenu" *ngIf="isOpen(item)">
+          <li *ngFor="let child of item.children">
+            <a [routerLink]="child.path" routerLinkActive="active">
+              <i [class]="child.icon"></i>
+              <span class="label">{{ child.label |translate }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>

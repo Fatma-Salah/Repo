@@ -1,0 +1,42 @@
+/* .form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}  */
+
+/* .form-field {
+  flex: 1 1 calc(50% - 8px);
+  min-width: 300px;
+} */
+
+.full-width {
+  flex: 0 0 100%;
+}
+.field-title {
+  color: var(--primary);
+  font-family: 'Almarai', sans-serif;
+  font-size: 20px !important;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38px;
+  margin-bottom: 20px;
+  margin-top: 4px;
+}
+
+
+.hidden-fields-errors-container {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+}
+
+.global-errors-container {
+  background-color: #fffbeb;
+  border: 1px solid #fed7aa;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.hidden-field-error-item {
+  margin-bottom: 8px;
+}

@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+/*  ─── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family:   sans-serif;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  /* overflow: hidden; */
+}
+:root {
+
+  --sidebar-w: 260px;
+  --sidebar-collapsed-w: 68px;
+  --header-h: 60px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Colors */
+  --bg-app: #c4cff1;
+  --bg-sidebar: #13161e;
+  --bg-sidebar-border: #1e2130;
+  --bg-content: #0f1117;
+  --bg-item-hover: rgba(255,255,255,0.04);
+  --bg-item-active: rgba(99, 179, 237, 0.1);
+
+  --accent: #63b3ed;
+  --accent-glow: rgba(99, 179, 237, 0.25);
+  --accent-muted: rgba(99, 179, 237, 0.6);
+
+  --text-primary: #e8eaf0;
+  --text-secondary: #6b7280;
+  --text-muted: #3d4250;
+  --text-active: #63b3ed;
+
+  --badge-bg: rgba(239, 68, 68, 0.15);
+  --badge-color: #f87171;
+
+  --header-bg: rgba(19, 22, 30, 0.85);
+  --scrollbar-thumb: #1e2130;
+}

@@ -1,0 +1,30 @@
+<header class="app-header">
+  <!-- Sidebar toggle button -->
+  <!-- <button class="toggle-btn" (click)="onToggleSidebar()">☰</button> -->
+
+  <!-- Logo / brand -->
+  <div class="logo">
+    <a routerLink="/">MyApp</a>
+  </div>
+
+  <!-- Spacer to push items right -->
+  <div class="spacer"></div>
+
+  <!-- Language switcher -->
+  <div class="lang-switcher">
+    @for (lang of languages; track $index) {
+        <button  
+            [class.active]="lang === selectedLang"
+            (click)="changeLanguage(lang)">
+      {{ lang.toUpperCase() }}
+    </button>
+    }
+
+  </div>
+
+  <!-- Optional user menu -->
+  <div class="user-menu">
+    <span class="user-name">John Doe</span>
+    <i class="pi pi-angle-down"></i>
+  </div>
+</header>

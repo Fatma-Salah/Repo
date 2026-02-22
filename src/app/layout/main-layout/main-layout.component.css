@@ -1,0 +1,22 @@
+
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+width: 100vw;
+  .main-content {
+    flex: 1;
+    margin-inline-start: var(--sidebar-width);
+    transition: margin 0.3s ease;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    &.sidebar-collapsed {
+      margin-inline-start: var(--sidebar-collapsed-width);
+    }
+  }
+}
+
+[dir="rtl"] .sidebar {
+  right: 0;
+  left: auto;
+}

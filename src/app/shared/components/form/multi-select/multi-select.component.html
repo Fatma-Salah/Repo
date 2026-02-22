@@ -1,0 +1,80 @@
+<!-- @if (!disabled) {
+<div [ngStyle]="{ width: width }">
+  <p class="title" *ngIf="appearLabel">
+    {{ title | translate }}
+    @if (!disabled) {
+    <span [class]="isOptional ? 'is-optional' : 'is-required'">
+      ({{ isOptional ? ("optional" | translate) : ("required" | translate) }})
+    </span>
+    }
+  </p>
+
+  <p-multiSelect
+    [maxSelectedLabels]="options.length + 1"
+    display="chip"
+    appendTo="body"
+    [filterBy]="'name,code,id'"
+    [showToggleAll]="false"
+    [formControl]="control"
+    [title]="name | translate"
+    [filter]="options.length > 0"
+    [options]="options"
+    optionLabel="name"
+    optionValue="id"
+    [loading]="loading"
+  >
+  </p-multiSelect>
+</div>
+
+}@else {
+
+<div [ngStyle]="{ width: width }">
+  <p class="title" *ngIf="appearLabel">{{ title | translate }}</p>
+  @for (opt of options; track opt.id) {
+  <div class="d-flex align-items-center gap-2">
+    <label class="form-check-label without-check" [for]="opt.id">
+      {{ opt.name || "لا يوجد" }}
+    </label>
+  </div>
+  }
+</div>
+} -->
+<div [ngStyle]="{ width: width }">
+  <p class="title" *ngIf="appearLabel&&title">
+    {{ title | translate }}
+    <span *ngIf="!disabled" [class]="isOptional ? 'is-optional' : 'is-required'">
+      ({{ isOptional ? ('optional' | translate) : ('required' | translate) }})
+    </span>
+  </p>
+
+  <ng-container *ngIf="!disabled; else disabledView">
+    <p-multiSelect
+      [maxSelectedLabels]="options.length + 1"
+      display="chip"
+      appendTo="body"
+      [filterBy]="'name,code,id'"
+      [showToggleAll]="true"
+      [formControl]="control"
+      [title]="name | translate"
+      [filter]="options.length > 0"
+      [options]="options"
+      optionLabel="name"
+      optionValue="id"
+      [loading]="loading"
+    >
+    </p-multiSelect>
+  </ng-container>
+
+  <ng-template #disabledView>
+    <div *ngIf="selectedOptions?.length > 0; else noSelection">
+      <div *ngFor="let opt of selectedOptions" class="d-flex align-items-center gap-2">
+        <label class="form-check-label without-check" [for]="opt.id">
+          {{ opt.name || "لا يوجد" }}
+        </label>
+      </div>
+    </div>
+    <ng-template #noSelection>
+      <div>{{ "لا يوجد" }}</div>
+    </ng-template>
+  </ng-template>
+</div>
